@@ -72,3 +72,14 @@ def invalid_login(request):
 def logout(request):
     auth.logout(request)
     return render(request, 'logout.html', {})
+
+
+@login_required
+def create_ticket(request):
+    conference = request.POST.get('conference', '')
+    type_of_ticket = request.POST.get('type_of_ticket', '')
+    price = request.POST.get('price', '')
+    status = request.POST.get('status', '')
+    return HttpResponseRedirect('accounts/loggedin/')
+
+
